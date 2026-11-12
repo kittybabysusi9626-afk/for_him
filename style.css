@@ -1,0 +1,1244 @@
+/* ========================================================
+   FOR ARSH ♡ - ROMANTIC DIGITAL MINI-LETTER
+   Aesthetic: Minimal Pinterest, Creamy Vintage Paper,
+   Warm Beige & Blush Pink Palette, Soft Natural Lighting
+   ======================================================== */
+
+:root {
+  /* Color Palette: Warm Beige, Soft Blush Pink & Cream */
+  --bg-desk-warm: #F6EDE4;
+  --bg-desk-shade: #EEDDCD;
+  --bg-desk-ambient: #FDF9F5;
+
+  --paper-cream: #FDFBF7;
+  --paper-ivory: #FAF5EB;
+  --paper-border: #E8DCCF;
+  --paper-line: rgba(220, 185, 175, 0.22);
+
+  --blush-light: #FCEEF1;
+  --blush-soft: #F7D5DC;
+  --blush-rose: #EAA8B7;
+  --blush-deep: #D76985;
+  --blush-vibrant: #D7496C;
+  --blush-dark: #A92E4E;
+
+  --ink-primary: #382824;
+  --ink-soft: #55403A;
+  --ink-muted: #826860;
+  --ink-gold: #B68D5D;
+
+  --font-letter: 'Caveat', cursive;
+  --font-heading: 'Sacramento', cursive;
+  --font-accent: 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --transition-gentle: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --shadow-letter: 
+    0 2px 4px rgba(70, 40, 35, 0.03),
+    0 12px 28px -6px rgba(80, 45, 40, 0.08),
+    0 30px 60px -15px rgba(95, 45, 55, 0.12),
+    0 50px 100px -25px rgba(100, 50, 60, 0.07);
+}
+
+/* Base Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: 
+    radial-gradient(ellipse at 25% 15%, #FFFDF9 0%, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(247, 213, 220, 0.45) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-desk-warm) 0%, #F1E2D4 50%, var(--bg-desk-shade) 100%);
+  color: var(--ink-primary);
+  font-family: var(--font-letter);
+  position: relative;
+  overflow-x: hidden;
+  padding: 85px 16px 60px;
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================================
+   NATURAL WINDOW LIGHTING & SHADOW OVERLAYS
+   Simulates golden afternoon sunlight pouring through sheer
+   curtains and casting dappled leaf shadows across the letter
+   ======================================================== */
+.window-sunbeam {
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 252, 245, 0.45) 0%,
+    rgba(255, 248, 238, 0.25) 32%,
+    rgba(255, 240, 230, 0.05) 58%,
+    transparent 80%
+  );
+  mix-blend-mode: soft-light;
+}
+
+.window-shadow-leaves {
+  position: fixed;
+  top: -10%;
+  right: -5%;
+  width: 65vw;
+  height: 75vh;
+  max-width: 800px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.07;
+  background: radial-gradient(ellipse at 70% 30%, #3B2A26 0%, transparent 60%);
+  filter: blur(45px);
+  animation: leafSway 16s ease-in-out infinite alternate;
+}
+
+@keyframes leafSway {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-15px, 12px) scale(1.03) rotate(1.5deg); }
+  100% { transform: translate(8px, -10px) scale(0.98) rotate(-1deg); }
+}
+
+/* Background Hearts Canvas */
+#heartsCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ========================================================
+   TOP ROMANTIC MUSIC PLAYER WIDGET
+   Chic minimal frosted glass pill with rotating heart icon
+   ======================================================== */
+.music-player-bar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  max-width: 94vw;
+}
+
+.player-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 253, 250, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(235, 205, 210, 0.65);
+  box-shadow: 
+    0 4px 15px rgba(110, 50, 65, 0.08),
+    0 1px 3px rgba(110, 50, 65, 0.04);
+  padding: 6px 14px 6px 8px;
+  border-radius: 999px;
+  transition: var(--transition-gentle);
+}
+
+.player-pill:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: var(--blush-rose);
+  box-shadow: 
+    0 8px 24px rgba(215, 73, 108, 0.15),
+    0 2px 6px rgba(110, 50, 65, 0.06);
+}
+
+/* Tiny Rotating Heart Disc */
+.rotating-heart-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #FFE5EC 0%, #FAD2DC 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease;
+  box-shadow: 0 2px 8px rgba(215, 73, 108, 0.25);
+}
+
+.rotating-heart-btn:hover {
+  transform: scale(1.08);
+}
+
+.heart-disc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--blush-vibrant);
+  animation: spinHeart 4s linear infinite;
+  animation-play-state: paused; /* Runs when music plays */
+}
+
+.rotating-heart-btn.is-playing .heart-disc {
+  animation-play-state: running;
+}
+
+@keyframes spinHeart {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.disc-heart-icon {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 1px 2px rgba(186, 46, 82, 0.3));
+}
+
+/* Mini Audio Waves Behind Disc */
+.disc-waves {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rotating-heart-btn.is-playing .disc-waves {
+  opacity: 1;
+}
+
+.disc-waves span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(215, 73, 108, 0.4);
+  animation: wavePulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.disc-waves span:nth-child(2) { animation-delay: 0.8s; }
+.disc-waves span:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes wavePulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Song Meta Information */
+.song-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.25;
+  font-family: var(--font-sans);
+  min-width: 135px;
+}
+
+.song-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+  letter-spacing: 0.2px;
+}
+
+.song-sub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+/* Quick Action: Romantic Moment Shortcut Button */
+.moment-shortcut-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #FFF0F4 0%, #FFE2E8 100%);
+  border: 1px solid rgba(235, 175, 190, 0.6);
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: var(--blush-dark);
+  font-family: var(--font-letter);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-gentle);
+  white-space: nowrap;
+}
+
+.moment-shortcut-btn:hover {
+  background: linear-gradient(135deg, #FFE0E8 0%, #FFCAD6 100%);
+  border-color: var(--blush-vibrant);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(215, 73, 108, 0.2);
+}
+
+.moment-shortcut-btn .sparkle-icon {
+  font-size: 0.85rem;
+  animation: sparkleTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.25) rotate(15deg); opacity: 1; }
+}
+
+/* Extra Player Controls */
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-ctrl-btn, .custom-audio-picker-label {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-ctrl-btn:hover, .custom-audio-picker-label:hover {
+  color: var(--blush-vibrant);
+  background: rgba(247, 213, 220, 0.4);
+}
+
+.ctrl-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Mini Progress Track Line */
+.player-progress-track {
+  width: 80%;
+  height: 3px;
+  background: rgba(215, 180, 185, 0.35);
+  border-radius: 999px;
+  margin-top: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.player-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blush-rose), var(--blush-vibrant));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* ========================================================
+   AUTOPLAY BLOCKED "PLAY OUR SONG ♡" INVITATION MODAL/BUTTON
+   Appears elegantly if the browser blocks unmuted autoplay
+   ======================================================== */
+.autoplay-invitation {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 120;
+  display: none; /* Shown dynamically by JS if autoplay rejected */
+  animation: slideUpFade 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.autoplay-invitation.is-visible {
+  display: block;
+}
+
+.invitation-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 252, 248, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(235, 175, 190, 0.8);
+  box-shadow: 
+    0 10px 30px rgba(169, 46, 78, 0.16),
+    0 2px 8px rgba(110, 50, 65, 0.08);
+  padding: 10px 18px 10px 14px;
+  border-radius: 999px;
+}
+
+.invitation-heart-pulse {
+  width: 32px;
+  height: 32px;
+  color: var(--blush-vibrant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heartThrob 1.4s ease-in-out infinite;
+}
+
+.invitation-heart-pulse svg {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes heartThrob {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.18); }
+  40% { transform: scale(1.05); }
+  60% { transform: scale(1.15); }
+}
+
+.invitation-text {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.cute-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #E65A7D 0%, #D7496C 100%);
+  border: none;
+  color: #FFFFFF;
+  font-family: var(--font-letter);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(215, 73, 108, 0.35);
+  transition: var(--transition-gentle);
+}
+
+.cute-play-btn:hover {
+  background: linear-gradient(135deg, #EC6F8F 0%, #C23659 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(215, 73, 108, 0.45);
+}
+
+.btn-heart-spark {
+  font-size: 1rem;
+}
+
+.btn-music-note {
+  font-size: 0.95rem;
+  animation: floatNote 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes floatNote {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 25px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ========================================================
+   MAIN DESK WORKSPACE & VINTAGE MINI-LETTER
+   ======================================================== */
+.letter-workspace {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 580px;
+  margin: 10px auto 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ambient Botanical Leaves in Corners */
+.desk-flower-accent {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.flower-left {
+  top: -20px;
+  left: -35px;
+}
+
+.flower-right {
+  bottom: 20px;
+  right: -30px;
+}
+
+.petal-soft {
+  position: absolute;
+  border-radius: 80% 20% 80% 20%;
+  background: linear-gradient(135deg, rgba(247, 213, 220, 0.6) 0%, rgba(235, 175, 190, 0.3) 100%);
+  backdrop-filter: blur(2px);
+  transform-origin: center;
+}
+
+.petal-1 {
+  width: 32px;
+  height: 20px;
+  transform: rotate(-35deg);
+}
+
+.petal-2 {
+  width: 24px;
+  height: 16px;
+  top: 15px;
+  left: 10px;
+  transform: rotate(20deg);
+  background: linear-gradient(135deg, rgba(255, 230, 235, 0.7), rgba(247, 200, 210, 0.35));
+}
+
+.petal-3 {
+  width: 28px;
+  height: 18px;
+  transform: rotate(110deg);
+}
+
+/* ========================================================
+   THE VINTAGE LETTER CARD (Creamy Cotton Parchment Paper)
+   ======================================================== */
+.vintage-letter-card {
+  position: relative;
+  width: 100%;
+  background-color: var(--paper-cream);
+  background-image: 
+    radial-gradient(ellipse at 80% 10%, rgba(255, 255, 255, 0.9) 0%, transparent 60%),
+    radial-gradient(circle at 10% 90%, rgba(244, 232, 220, 0.45) 0%, transparent 50%),
+    linear-gradient(180deg, #FFFDFB 0%, var(--paper-cream) 40%, var(--paper-ivory) 100%);
+  border-radius: 14px;
+  border: 1px solid var(--paper-border);
+  box-shadow: var(--shadow-letter);
+  padding: 48px 42px 42px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+  animation: letterEntrance 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  overflow: hidden;
+}
+
+.vintage-letter-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 4px 8px rgba(70, 40, 35, 0.04),
+    0 18px 38px -8px rgba(80, 45, 40, 0.1),
+    0 35px 75px -15px rgba(95, 45, 55, 0.14);
+}
+
+@keyframes letterEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Realistic Deckle / Antique Inner Margin Line */
+.vintage-letter-card::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(215, 185, 170, 0.35);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Realistic Rose Gold Washi Tape at Top Center */
+.washi-tape-strip {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-0.8deg);
+  width: 120px;
+  height: 26px;
+  background: linear-gradient(
+    90deg,
+    rgba(244, 194, 205, 0.72) 0%,
+    rgba(255, 220, 230, 0.85) 50%,
+    rgba(244, 194, 205, 0.72) 100%
+  );
+  backdrop-filter: blur(2px);
+  box-shadow: 
+    0 2px 5px rgba(110, 50, 60, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  z-index: 20;
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    97% 50%, 
+    100% 100%, 
+    0% 100%, 
+    3% 50%
+  );
+}
+
+/* Vintage Postage Stamp & Postmark */
+.postage-stamp-wrap {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+}
+
+.postage-stamp {
+  width: 50px;
+  height: 62px;
+  background: #FFFDF9;
+  border: 1px dashed rgba(200, 160, 150, 0.6);
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(90, 50, 50, 0.08);
+  transform: rotate(3.5deg);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.vintage-letter-card:hover .postage-stamp {
+  transform: rotate(1.5deg) scale(1.03);
+}
+
+.stamp-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FDECEF 0%, #F9D5DD 100%);
+  border: 1px solid rgba(225, 175, 185, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--blush-vibrant);
+  font-family: var(--font-sans);
+  text-align: center;
+}
+
+.stamp-heart {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--blush-vibrant);
+}
+
+.stamp-caption {
+  font-size: 0.44rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-top: 2px;
+  color: var(--ink-soft);
+}
+
+.stamp-price {
+  font-size: 0.48rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* Postmark Cancellation Circle */
+.postmark-circle {
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  width: 68px;
+  height: 68px;
+  pointer-events: none;
+  opacity: 0.45;
+  color: var(--ink-soft);
+  transform: rotate(-12deg);
+}
+
+.postmark-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.postmark-text {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  fill: currentColor;
+}
+
+.postmark-date {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: currentColor;
+}
+
+/* Faint Ruled Writing Lines Background */
+.paper-lines-bg {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 33px,
+    var(--paper-line) 34px
+  );
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Inner Letter Content Wrap */
+.letter-inner-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* ========================================================
+   HEADING: "For Arsh ♡"
+   ======================================================== */
+.letter-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.letter-heading-tag {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--blush-deep);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.letter-heading {
+  font-family: var(--font-heading);
+  font-size: 3.4rem;
+  font-weight: 400;
+  color: var(--ink-primary);
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(186, 46, 82, 0.12);
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.letter-heading:hover {
+  transform: scale(1.02);
+  color: var(--blush-vibrant);
+}
+
+.letter-heading-flourish {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 140px;
+  margin-top: 2px;
+}
+
+.flourish-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blush-rose), transparent);
+}
+
+.flourish-line:last-child {
+  background: linear-gradient(270deg, var(--blush-rose), transparent);
+}
+
+.flourish-heart {
+  font-size: 0.85rem;
+  color: var(--blush-rose);
+}
+
+/* ========================================================
+   LOVE LETTER BODY
+   Authentic handwritten cursive font with ink flow timing
+   ======================================================== */
+.letter-body {
+  font-family: var(--font-letter);
+  font-size: 1.75rem;
+  line-height: 2.15;
+  color: var(--ink-primary);
+  margin-bottom: 24px;
+}
+
+.letter-line {
+  position: relative;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: inkFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+/* Staggered ink reveal sequence */
+.line-1 { animation-delay: 0.3s; }
+.line-2 { animation-delay: 0.6s; }
+.line-3 { animation-delay: 0.85s; }
+.line-4 { animation-delay: 1.1s; }
+.line-5 { animation-delay: 1.4s; }
+.line-6 { animation-delay: 1.65s; }
+.line-7 { animation-delay: 1.95s; }
+.line-8 { animation-delay: 2.2s; }
+
+@keyframes inkFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-stanza {
+  margin-top: 14px;
+}
+
+.letter-stanza.stanza-1 {
+  padding-left: 6px;
+}
+
+.letter-stanza.stanza-2 {
+  padding-left: 6px;
+}
+
+.letter-stanza.stanza-3 {
+  padding-left: 6px;
+}
+
+.kiss-sentence-wrap {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.kiss-emoji-inline {
+  display: inline-block;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 3px rgba(215, 73, 108, 0.25));
+  animation: kissEmojiPulse 2s ease-in-out infinite;
+}
+
+@keyframes kissEmojiPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(4deg); }
+}
+
+/* ========================================================
+   REALISTIC LITTLE PINK LIPSTICK KISS MARK 💋
+   High-detail vector artwork with realistic lip striations,
+   natural feathering & paper absorption translucency
+   ======================================================== */
+.realistic-lipstick-kiss-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 95px;
+  height: 65px;
+  cursor: pointer;
+  transform: rotate(-7deg) translateY(4px);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.realistic-kiss-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(186, 46, 82, 0.2));
+  transition: all 0.3s ease;
+}
+
+.realistic-lipstick-kiss-wrapper:hover {
+  transform: rotate(-4deg) translateY(-2px) scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(215, 73, 108, 0.35));
+}
+
+.realistic-lipstick-kiss-wrapper:active {
+  transform: rotate(-7deg) scale(0.96);
+}
+
+/* Interactive Kiss Tooltip */
+.kiss-tooltip {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: rgba(56, 40, 36, 0.92);
+  color: #FFFDF9;
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 30;
+}
+
+.realistic-lipstick-kiss-wrapper:hover .kiss-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================================
+   SPECIAL ROMANTIC MOMENT: "Yaachey Yaachey ♡"
+   Soft fade-in animation, glowing rose aura,
+   and delicate Pinterest-style badge
+   ======================================================== */
+.romantic-moment-box {
+  position: relative;
+  margin: 22px auto 16px;
+  padding: 16px 20px;
+  text-align: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 240, 245, 0.7) 0%, rgba(254, 230, 237, 0.5) 100%);
+  border: 1px dashed rgba(230, 165, 180, 0.55);
+  box-shadow: 0 4px 18px rgba(215, 73, 108, 0.08);
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+/* When triggered, activates soft glowing fade-in */
+.romantic-moment-box.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  animation: momentBreathing 4s ease-in-out infinite alternate;
+}
+
+@keyframes momentBreathing {
+  0% {
+    box-shadow: 0 4px 18px rgba(215, 73, 108, 0.08);
+    border-color: rgba(230, 165, 180, 0.55);
+  }
+  100% {
+    box-shadow: 0 8px 30px rgba(215, 73, 108, 0.22);
+    border-color: rgba(215, 73, 108, 0.85);
+  }
+}
+
+.moment-glow-aura {
+  position: absolute;
+  inset: -10px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 185, 205, 0.45) 0%, transparent 70%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.moment-inner-pill {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.moment-lyric-text {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--blush-vibrant);
+  letter-spacing: 2px;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(215, 73, 108, 0.25);
+  transition: letter-spacing 0.8s ease;
+}
+
+.romantic-moment-box.is-active .moment-lyric-text {
+  letter-spacing: 3.5px;
+}
+
+.moment-sparkle-left, .moment-sparkle-right {
+  font-size: 1.1rem;
+  color: #D2A054;
+  animation: sparkleDance 2.5s ease-in-out infinite alternate;
+}
+
+.moment-sparkle-right {
+  animation-delay: 1.25s;
+}
+
+@keyframes sparkleDance {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.7; }
+  100% { transform: translateY(-4px) scale(1.2); opacity: 1; }
+}
+
+.moment-caption {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ========================================================
+   LETTER FOOTER SIGN-OFF
+   ======================================================== */
+.letter-footer {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(220, 190, 180, 0.35);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.letter-signature-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.sig-prefix {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+}
+
+.sig-name {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--blush-dark);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.letter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(225, 185, 195, 0.6);
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: var(--transition-gentle);
+}
+
+.footer-btn:hover {
+  background: #FFF;
+  border-color: var(--blush-rose);
+  color: var(--blush-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(186, 46, 82, 0.12);
+}
+
+/* ========================================================
+   HEART PARTICLES BURST ANIMATION (Spawned dynamically)
+   ======================================================== */
+.click-heart-spark {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 1.25rem;
+  user-select: none;
+  animation: popFloat 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes popFloat {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    transform: translate(var(--tx, 0px), var(--ty, -40px)) scale(1.3) rotate(var(--rot, 15deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 0px), var(--ty, -90px)) scale(0.8) rotate(var(--rot, 30deg));
+  }
+}
+
+/* Sweet Toast Feedback */
+.love-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(56, 40, 36, 0.94);
+  color: #FFFDF9;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.love-toast.is-shown {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (Mobile, Tablet, Desktop)
+   ======================================================== */
+@media (max-width: 640px) {
+  body {
+    padding: 76px 12px 40px;
+  }
+
+  .player-pill {
+    padding: 4px 10px 4px 6px;
+    gap: 8px;
+  }
+
+  .song-meta {
+    min-width: 110px;
+  }
+
+  .song-title {
+    font-size: 0.76rem;
+  }
+
+  .song-sub {
+    font-size: 0.62rem;
+  }
+
+  .moment-shortcut-btn {
+    padding: 4px 8px;
+    font-size: 0.82rem;
+  }
+
+  .vintage-letter-card {
+    padding: 38px 22px 28px;
+    border-radius: 12px;
+  }
+
+  .postage-stamp-wrap {
+    top: 16px;
+    right: 16px;
+  }
+
+  .postage-stamp {
+    width: 42px;
+    height: 52px;
+  }
+
+  .stamp-heart {
+    font-size: 1rem;
+  }
+
+  .letter-heading {
+    font-size: 2.7rem;
+  }
+
+  .letter-body {
+    font-size: 1.48rem;
+    line-height: 2.05;
+  }
+
+  .realistic-lipstick-kiss-wrapper {
+    width: 82px;
+    height: 56px;
+  }
+
+  .moment-lyric-text {
+    font-size: 2.3rem;
+  }
+
+  .moment-caption {
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+  }
+
+  .sig-name {
+    font-size: 1.9rem;
+  }
+
+  .invitation-card {
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .cute-play-btn {
+    font-size: 1rem;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .song-sub {
+    display: none;
+  }
+
+  .moment-shortcut-btn .btn-text {
+    display: none;
+  }
+
+  .moment-shortcut-btn::after {
+    content: "Yaachey ♡";
+  }
+
+  .letter-heading {
+    font-size: 2.4rem;
+  }
+
+  .letter-body {
+    font-size: 1.35rem;
+  }
+}
